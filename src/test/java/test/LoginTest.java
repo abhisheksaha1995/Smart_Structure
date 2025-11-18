@@ -24,28 +24,46 @@ public class LoginTest{
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 	}
 
-	@Test
+	@Test(priority = 1)
 	public void invalidLogin()throws IOException {
 		lg.setEmail(ReadProperty.value("email"));
 		lg.setPassword(ReadProperty.value("password"));
 		lg.clickButton();
 
 	}
-	@Test
+	@Test(priority = 2)
 	public void emptyLogin() {
 		driver.navigate().refresh();
-		try {
+		
 			if (lg.checkEnabled()) {
 				lg.clickButton();
 			}
 			else System.out.println("unable to click since button is disabled");
-			} catch(Exception e){
-				System.out.println("Button disabled");
-			}
+			
 		}
 
-	@AfterSuite
-	public void closeAll() {
-		driver.quit();
+	@Test (priority =3)
+	public void validLogin()throws IOException {
+		lg.setEmail(ReadProperty.value("validEmail"));
+		lg.setPassword(ReadProperty.value("validPassword"));
+		lg.clickButton();
+		//driver.navigate().back();
+
 	}
+	
+	@Test(priority = 2)
+	public void onlyEmail() throws IOException {
+		driver.navigate().refresh();
+		lg.setEmail(ReadProperty.value("validEmail"));
+			if (lg.checkEnabled()) {
+				lg.clickButton();
+			}
+			else System.out.println("unable to click since button is disabled");
+			
+		}
+
+//	@AfterSuite
+//	public void closeAll() {
+//		driver.quit();
+//	}
 }
