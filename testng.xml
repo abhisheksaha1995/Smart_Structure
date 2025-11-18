@@ -3,12 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="Smart_Structure/src">
         <classes>
-            <class name="test.LoginTest">
-                <methods>
-                    <include name="invalidLogin"/>
-                    <include name="emptyLogin"/>
-                </methods>
-            </class>
+            <class name="test.LoginTest" />
         </classes>
     </test>
 </suite>

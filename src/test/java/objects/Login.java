@@ -8,9 +8,7 @@ import org.openqa.selenium.WebElement;
 
 public class Login extends Main{
 
-	private static WebElement element = null;
-
-	public static WebElement emailBox(WebDriver driver) {
+    public static WebElement emailBox(WebDriver driver) {
 		return driver.findElement(By.name("email"));
 	}
 
@@ -20,5 +18,9 @@ public class Login extends Main{
 
 	public static WebElement submitButton(WebDriver driver) {
 		return driver.findElement(By.xpath("//button[@type='submit']"));
+	}
+
+	public static WebElement errorMsg(WebDriver driver){
+		return driver.findElement(By.id("swal2-html-container"));
 	}
 }
