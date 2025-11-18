@@ -29,6 +29,12 @@ public class LoginTest{
 		lg.clickButton();
 
 	}
+	@Test
+	public void emptyLogin() {
+		Login lg = new Login(driver);
+		lg.clickButton();
+
+	}
 	
 	@AfterSuite
 	public void closeAll() {
