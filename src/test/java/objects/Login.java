@@ -4,31 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import base.Main;
+import org.openqa.selenium.WebElement;
 
 public class Login extends Main{
-	
-	WebDriver driver;
-	
-	public Login(WebDriver driver) {
-		this.driver = driver;
+
+	private static WebElement element = null;
+
+	public static WebElement emailBox(WebDriver driver) {
+		return driver.findElement(By.name("email"));
 	}
 
-//	mention locators here
-	By emailBox = By.name("email");
-	By passwordBox = By.name("password");
-	By submitButton = By.xpath("//button[@type='submit']");
+	public static WebElement passwordBox(WebDriver driver) {
+		return driver.findElement(By.name("password"));
+	}
 
-	// mention actions here
-	public void setEmail(String email) {
-		driver.findElement(emailBox).sendKeys(email);
-	}
-	public void setPassword(String password) {
-		driver.findElement(passwordBox).sendKeys(password);
-	}
-	public void clickButton() {
-		driver.findElement(submitButton).click();
-	}
-	public boolean checkEnabled() {
-		return driver.findElement(submitButton).isEnabled();
+	public static WebElement submitButton(WebDriver driver) {
+		return driver.findElement(By.xpath("//button[@type='submit']"));
 	}
 }
