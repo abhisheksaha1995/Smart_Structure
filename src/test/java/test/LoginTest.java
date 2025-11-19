@@ -3,7 +3,10 @@ package test;
 import java.io.IOException;
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -24,11 +27,12 @@ public class LoginTest {
             throw new RuntimeException(e);
         }
     }
-
+WebDriverWait wait;
     @BeforeSuite
     public void launch() throws IOException {
         driver.get(ReadProperty.value("baseurl"));
         driver.manage().window().maximize();
+        wait = new WebDriverWait(driver,Duration.ofSeconds(30));
     }
 
     @Test(priority = 1)
@@ -36,7 +40,8 @@ public class LoginTest {
         Login.emailBox(driver).sendKeys(ReadProperty.value("invalid.email"));
         Login.passwordBox(driver).sendKeys(ReadProperty.value("password"));
         Login.submitButton(driver).click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(@class,'swal2-confirm')]")));
         Assert.assertEquals(Login.errorMsg(driver).getText(),"No user found");
     }
 
