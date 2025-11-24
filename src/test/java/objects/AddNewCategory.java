@@ -11,7 +11,10 @@ public class AddNewCategory {
     }
 
     public static WebElement getCat(WebDriver driver) {
-        return driver.findElement(By.linkText("categories"));
+        return driver.findElement(By.xpath("//*[contains(text(), 'Categories')]"));
+    }
+    public static WebElement addNew(WebDriver driver) {
+        return driver.findElement(By.xpath("//div[@class='add-category-button']"));
     }
 
     public static WebElement catName(WebDriver driver) {
