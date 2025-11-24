@@ -22,7 +22,7 @@ public class addNewCategoryTest {
 
     @Test
     public static void add() {
-        lt.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        lt.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         prodCat(lt.driver).click();
         getCat(lt.driver).click();
         addNew(lt.driver).click();
@@ -33,6 +33,8 @@ public class addNewCategoryTest {
         action.keyDown(Keys.ARROW_DOWN)
                 .keyDown(Keys.ENTER)
                 .build().perform();
+        lt.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+//        catImg(lt.driver).click();
         catImg(lt.driver).sendKeys(new File("src/test/resources/test.jpg").getAbsolutePath());
     }
 }

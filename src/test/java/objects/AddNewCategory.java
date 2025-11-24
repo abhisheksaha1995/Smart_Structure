@@ -26,7 +26,7 @@ public class AddNewCategory {
     }
 
     public static WebElement catImg(WebDriver driver) {
-        return driver.findElement(By.xpath("//div[@class='add-category-button']"));
+        return driver.findElement(By.name("categoryImage"));
     }
 
     public static WebElement catBtn(WebDriver driver) {
