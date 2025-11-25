@@ -49,7 +49,7 @@ WebDriverWait wait;
     public void emptyLogin() {
         driver.navigate().refresh();
         if (!(Login.submitButton(driver).isEnabled())) {
-            System.out.println("Button is sisabled if both email and pwd empty");
+            System.out.println("Button is disabled if both email and pwd empty");
         }
     }
 
@@ -61,13 +61,19 @@ WebDriverWait wait;
 
     }
 
-    @Test(priority = 2)
+    @Test(priority = 4)
     public void onlyEmail() throws IOException {
         driver.navigate().refresh();
         Login.emailBox(driver).sendKeys(ReadProperty.value("valid.email"));
         if (!(Login.submitButton(driver).isEnabled())) {
             System.out.println("Button is disabled even after entering email");
         }
+        
+      
+        
+        
+        
+        
     }
 
 	@AfterSuite
