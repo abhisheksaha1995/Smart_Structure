@@ -18,18 +18,18 @@ import objects.Login;
 import utility.ReadProperty;
 
 public class LoginTest {
-    WebDriver driver;
+    static WebDriver driver;
 
-    {
+    static {
         try {
             driver = Main.d();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-WebDriverWait wait;
-    @BeforeSuite
-    public void launch() throws IOException {
+static WebDriverWait wait;
+    @BeforeTest(groups = {"smoke"})
+    public static void launch() throws IOException {
         driver.get(ReadProperty.value("baseurl"));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver,Duration.ofSeconds(30));
@@ -53,8 +53,8 @@ WebDriverWait wait;
         }
     }
 
-    @Test(priority = 3)
-    public void validLogin() throws IOException {
+    @Test(priority = 1,groups = {"smoke"})
+    public static void validLogin() throws IOException {
         Login.emailBox(driver).sendKeys(ReadProperty.value("valid.email"));
         Login.passwordBox(driver).sendKeys(ReadProperty.value("password"));
         Login.submitButton(driver).click();
