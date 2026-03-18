@@ -35,6 +35,9 @@ public class addNewCategoryTest {
                 .build().perform();
         lt.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 //        catImg(lt.driver).click();
-        catImg(lt.driver).sendKeys(new File("src/test/resources/test.jpg").getAbsolutePath());
+        catImg(lt.driver).sendKeys(new File("src/test/resources/Acc_Brand.jpg").getAbsolutePath());
+        catBtn(lt.driver).click();
+        
     }
+    
 }

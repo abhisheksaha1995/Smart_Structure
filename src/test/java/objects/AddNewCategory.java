@@ -38,4 +38,6 @@ public class AddNewCategory {
     public static WebElement catBtn(WebDriver driver) {
         return driver.findElement(By.xpath("//button[contains(text(), 'Submit')]"));
     }
+    
+    
 }
